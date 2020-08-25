@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title=  'LOGIN'
+    meta(charset='utf-8')
+    meta(name="viewport" content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    //- Boostrap 
+    link(rel='stylesheet' href='./scripts/bootstrap.min.css')
+    //- jQuery library 
+    script(src='./scripts/jquery.min.js')
+    //-  JavaScript 
+    script(src='./scripts/bootstrap.min.js')   
+    //- Popper
+    src(src='./scripts/popper.min.js')
+    //-  Nuestro css 
+    link(rel='stylesheet' type='text/css' href='./static/stylesheets/contact.css' th:href='@{/stylesheets/contact.css}')
+    //- Los iconos tipo Solid de Fontawesome
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.8/css/solid.css')
+    script(src='https://use.fontawesome.com/releases/v5.0.7/js/all.js')
+  body
+    block content
+     .modal-dialog.text-center
+      .col-sm-8.main-section
+       .modal-content
+        .col-12.user-img
+         img(src='./static/images/user.png' th:src='@{/images/user.png}')
+        form.col-12(action="@{/index}" method="get")
+         .form-group(id="user-group")
+          input(type="text" class="form-control" placeholder="Nombre de usuario" name="username")
+         .form-group(id='contrasena-group')
+          input(type="password" class="form-control" placeholder="Contraseña" name="password")
+          button.btn.btn-primary(type='submit')
+           i.fas.fa-sign-in-alt
+           |Ingresar
+        .col-12.forgot
+        a(href='#') Recordar contrasena? 
+
+

@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title=  'HOME'
+    meta(charset='utf-8')
+    meta(name="viewport" content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    //- Boostrap 
+    //- link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+    link(rel='stylesheet' href='./scripts/bootstrap.min.css')
+    //- jQuery library 
+    //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+    script(src='./scripts/jquery.min.js')
+    //-  JavaScript 
+    //- script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')   
+    script(src='./scripts/bootstrap.min.js')  
+    //- Popper
+    //- src(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js')
+    src(src='./scripts/popper.min.js')
+    //- link(rel='stylesheet', href='./static/stylesheets/style.css')    
+    //-  Nuestro css 
+    link(rel='stylesheet' type='text/css' href='./static/stylesheets/index.css' th:href='@{/stylesheets/index.css}')
+
+  body
+    block content
+
+
+

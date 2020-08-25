@@ -1,0 +1,35 @@
+extends layout
+
+block content
+
+ .navbar.navbar-inverse 
+  .navbar-header  
+    ul.nav.nav-tabs.navbar-expand-sm.navbar-dark.bg-dark
+      li.nav-item.dropdown
+         a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#') Catálogos
+          span.caret   
+         ul.dropdown-menu
+          li
+            a(href='planes') Planes
+          li
+            a(href='coberturas') Coberturas
+          li
+            a(href='datos') Datos Particulares         
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#') Cotización
+          span.caret 
+        ul.dropdown-menu
+          li
+            a(href='rs') RS Hospital
+          li
+            a(href='gastos') Gastos Funerario        
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#') Openpay
+          span.caret 
+        ul.dropdown-menu
+          li
+            a(href='token') Tokenizar
+          li
+            a(href='cobrar') Cobrar
+      li.nav-item
+        a.nav-link(href='contacto') Contacto           

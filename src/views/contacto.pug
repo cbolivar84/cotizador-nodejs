@@ -1,0 +1,60 @@
+doctype html
+html
+  head
+    title=  'HOME'
+    meta(charset='utf-8')
+    meta(name="viewport" content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    //- Boostrap 
+    link(rel='stylesheet' href='./scripts/bootstrap.min.css')
+    //- jQuery library 
+    script(src='./scripts/jquery.min.js')
+    //-  JavaScript 
+    script(src='./scripts/bootstrap.min.js')   
+    //- Popper
+    src(src='./scripts/popper.min.js')
+    //-  Nuestro css 
+    link(rel='stylesheet' type='text/css' href='./static/stylesheets/contact.css' th:href='@{/stylesheets/contact.css}')
+    //-  Los iconos 
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css')
+
+  body
+    block content
+
+     button.btn.btn-link.text-white.font-weight-bold.btn-block(type='button')
+      a(href='/', style='font-size: 30px;color:inherit;') Home Page
+    .modal-dialog.text-center
+      .col-sm-16.main-section
+        .modal-content
+          h2.text-white.font-weight-bold.text-center.my-4 Contacto
+          form.form-horizontal(method='post')
+                .form-group
+                span.text-center
+                i.fas.fa-user-tie(style='font-size:28px;color:lightblue;text-shadow:2px 2px 4px #000000;')
+                .col-md-20
+                    input#fname.form-control(name='name', type='text', placeholder='Nombre')
+                .form-group
+                span.text-center
+                i.fas.fa-user-tie(style='font-size:28px;color:lightblue;text-shadow:2px 2px 4px #000000;')
+                .col-md-20
+                    input#lname.form-control(name='name', type='text', placeholder='Apellido')
+                .form-group
+                span.text-center
+                i.fas.fa-envelope(style='font-size:28px;color:lightblue;text-shadow:2px 2px 4px #000000;')
+                .col-md-20
+                    input#email.form-control(name='email', type='text', placeholder='Email')
+                .form-group
+                span.text-center
+                i.fas.fa-phone(style='font-size:28px;color:lightblue;text-shadow:2px 2px 4px #000000;')
+                .col-md-20
+                    input#phone.form-control(name='phone', type='text', placeholder='Teléfono')
+                .form-group
+                span.text-center
+                i.fas.fa-edit(style='font-size:28px;color:lightblue;text-shadow:2px 2px 4px #000000;')
+                .col-md-20
+                    textarea#message.form-control(name='message', placeholder='Introduzca su mensaje.', rows='7')
+                .container
+                .row
+                    .col
+                    button.btn.btn-primary.btn-lg(type='submit') Guardar
+                    .col
+                    button.btn.btn-danger.btn-lg(type='button') Cancelar
