@@ -1,9 +1,11 @@
+function create_cliente() {
+
 var Openpay = require('openpay');
 var openpay = new Openpay('mnqcgrppv7kl3jluue9y', 'sk_5831b35232884c1d89dd6d0203924503',false);
 openpay.setTimeout(20000);
 var newCustomer = {
-  "name":"John",
-  "email":"johndoe@example.com",
+  "name":"jose",
+  "email":"jo.rest@example.com",
   "last_name":"Doe",
   "address":{
     "city":"Queretaro",
@@ -21,3 +23,7 @@ openpay.customers.create(newCustomer, function(error, body) {
     body;     // contains the object returned if no error occurred (status code == 200||201||204)
     console.log(body);
 });
+
+}
+
+module.exports = create_cliente;

@@ -9,6 +9,14 @@ body {
   padding: 0;
 }
 
+.h1 {
+  color: white;
+}
+
+.p {
+  color: white;
+}
+
 .modal-content {
   background-color: #3b4652;
   opacity: 0.85;

@@ -4,6 +4,7 @@
   "description": "Cotizador Generico",
   "main": "index.js",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
     "config": "^3.3.1",

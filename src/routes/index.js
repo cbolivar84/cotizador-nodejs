@@ -21,4 +21,8 @@ router.get('/token', function(req, res, next) {
   res.render('token', { title: 'Token' });
 });
 
+/* Token. */
+router.get('/payment', function(req, res, next) {
+  res.render('payment', { title: 'payment' });
+});
 module.exports = router;

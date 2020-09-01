@@ -1,7 +1,7 @@
 {
     "app": {
         "name": "Cotizador - Produccion",
-        "port": 8001
+        "port": 8002
     },
     "dbConfig": {
             "host": "prod-db-server",

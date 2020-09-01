@@ -1,0 +1,106 @@
+doctype html
+html
+  head
+    title=  'PAYMENT'
+    meta(charset='utf-8')
+    meta(name="viewport" content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    //- OPENPAY 
+    script(type='text/javascript' src='https://openpay.s3.amazonaws.com/openpay.v1.min.js')
+    script(type='text/javascript' src='https://openpay.s3.amazonaws.com/openpay-data.v1.min.js')
+    script(type='text/javascript' src='./static/javascripts/Obtener_DeviceSessionId.js')
+    script(type='text/javascript' src='../controllers/constants.js')
+    script(type='text/javascript').
+        sandBoxActivo = true; // indicador de ambiente  
+        if (sandBoxActivo = true) {
+            SessionId(constants.idComercioSandbox, constants.publickSandbox,sandBoxActivo); // Sandbox
+          console.log('deviceSessionId:' + constants.deviceSessionId);
+        } else {
+          SessionId(constants.idComercioSandbox, constants.idComercioSandbox, sandBoxActivo); // Produccion
+        }
+    script(type='text/javascript').
+        function postRequest(){     
+         const formElement  = new FormData(document.getElementById('tokenform'));
+              var formdata = {
+                            card_number: formElement.get("formtarjeta"),
+                            holder_name: formElement.get("formhabiente"),
+                            expiration_year:  formElement.get("formanio"),
+                            expiration_month: formElement.get("formmes"),
+                            cvv2:  formElement.get("formcvv"),
+                            device_session_id: constants.deviceSessionId,
+                          };            
+          console.log(JSON.stringify(formdata)); 
+          let request = new Request('/api/v1/Openpay/CrearToken', {
+              method: 'post',
+              headers: {
+                          'Content-Type': 'application/json'
+                      },              
+              body: JSON.stringify(formdata)
+          }); 
+         fetch(request)           
+              .then(function(response) {
+                  console.log('response =', response);
+                  return response.text();
+              })
+              .then(function(data) {
+                  console.log('data = ', data);
+                  document.getElementById('outputToken').innerHTML = data;
+              })
+              .catch(function(err) {
+                  console.error(err);
+              }); 
+            }
+
+
+    //- Boostrap 
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+    //- link(rel='stylesheet' href='./scripts/bootstrap.min.css')
+     //- jQuery library 
+    link(rel='stylesheet', href='/scripts/jquery.min.js')
+    //-  JavaScript 
+    link(rel='stylesheet', href='/scripts/bootstrap.min.js')  
+    //- Popper
+    link(rel='stylesheet', href='/scripts/popper.js')
+    //-  Nuestro css 
+    link(rel='stylesheet' type='text/css' href='./static/stylesheets/token.css' th:href='@{/stylesheets/token.css}')
+    //-  Los iconos 
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css')  
+
+  body
+    block content
+
+     button.btn.btn-link.h1.font-weight-bold.btn-block(type='button')
+       a(href='/', style='font-size: 30px;color:inherit;') Home Page
+     .modal-dialog.text-center
+      .col-sm-20.main-section
+        .modal-content
+          h2.text-primary.font-weight-bold.text-center.my-4 Datos para Cobrar
+          form.credit-card-div(action='#', id='tokenform')
+            .row
+            .col-md-12
+            input.form-control(type='text', name='formtarjeta', placeholder.='Número de Tarjeta')
+            .row
+             .col-md-3.col-sm-3.col-xs-3
+              span.p.small-font Mes 
+              input.form-control(type='text', name='formmes', placeholder='MM')
+             .col-md-3.col-sm-3.col-xs-3
+              span.p.small-font  A&ntilde;o 
+              input.form-control(type='text', name='formanio', placeholder='YY')
+             .col-md-3.col-sm-3.col-xs-3
+              span.p.small-font  CVV
+              input.form-control(type='text', name='formcvv', placeholder='CCV')
+             .col-md-3.col-sm-3.col-xs-3.pad-adjust
+              span.far.fa-credit-card(style='font-size:40px;color:lightblue;text-shadow:2px 2px 4px #000000;') 
+            .row
+            .col-md-12.pad-adjust
+            input.form-control(type='text', name='formhabiente', placeholder='Nombre Tarjeta Habiente') 
+            .row
+            .col-md-3.col-sm-3.col-xs-3.pad-adjust
+             input.btn.btn-warning.btn-block(type='button',value='TOKENIZAR', onclick='postRequest()')  
+            .col-md-9.col-sm-6.col-xs-3.pad-adjust
+             input.btn.btn-danger(type='reset', value="CANCEL")  
+            .row
+            .col-md-6.pad-adjust
+            textarea.form-control(id='outputToken', rows='6' wrap=on, readonly, placeholder='Resultado  ')
+
+            
